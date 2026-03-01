@@ -20,7 +20,7 @@ public class MainApp extends Application {
 
     /**
      * instancia unica del taller, compartida por todos los controladores
-     * a través de {@link #getTaller()}.
+     * a través de #getTaller().
      */
     private static final TallerBicicletas taller = new TallerBicicletas(
             "Ciclo Taller El Parche",
@@ -29,16 +29,16 @@ public class MainApp extends Application {
     );
 
     /**
-     * Retorna la instancia compartida del taller.
+     * retorna la instancia compartida del taller.
      *
      * @return instancia de {@link TallerBicicletas}.
      */
     public static TallerBicicletas getTaller() { return taller; }
 
     /**
-     * Inicializa y muestra la ventana principal.
+     * inicializa y muestra la ventana principal.
      *
-     * @param stage Ventana principal proporcionada por JavaFX.
+     * @param stage ventana principal proporcionada por JavaFX.
      * @throws Exception si el FXML no se encuentra o falla al cargarse.
      */
     @Override
@@ -49,7 +49,7 @@ public class MainApp extends Application {
         scene.getStylesheets().add(
                 getClass().getResource("/fxml/styles.css").toExternalForm());
 
-        stage.setTitle("🚲  " + taller.getNombre() + "  —  " + taller.getDireccion());
+        stage.setTitle(taller.getNombre() + "  —  " + taller.getDireccion());
         stage.setScene(scene);
         stage.setMinWidth(820);
         stage.setMinHeight(600);
@@ -57,7 +57,7 @@ public class MainApp extends Application {
     }
 
     /**
-     * Método principal. Lanza la aplicación JavaFX.
+     * método principal. Lanza la aplicación JavaFX.
      *
      * @param args Argumentos de línea de comandos (no se usan).
      */
