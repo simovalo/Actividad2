@@ -1,3 +1,4 @@
+<!-- Vista para gestionar órdenes de servicio -->
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
@@ -8,9 +9,9 @@
       spacing="16" styleClass="view-root">
     <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
 
-    <Label text="📋  Órdenes de Servicio" styleClass="view-title"/>
+    <Label text="Órdenes de Servicio" styleClass="view-title"/>
 
-    <!-- ── FORMULARIO NUEVA ORDEN ── -->
+    <!-- Formulario de nueva orden -->
     <TitledPane text="Nueva Orden" collapsible="false" styleClass="form-pane">
         <GridPane hgap="12" vgap="10">
             <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
@@ -63,7 +64,7 @@
         </GridPane>
     </TitledPane>
 
-    <!-- ── ACTUALIZAR ESTADO ── -->
+    <!-- Actualizacion de estado -->
     <TitledPane text="Actualizar estado de orden (seleccionar fila en tabla)" collapsible="false" styleClass="form-pane">
         <HBox spacing="12" alignment="CENTER_LEFT">
             <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
@@ -74,6 +75,7 @@
         </HBox>
     </TitledPane>
 
+<!-- Tabla de órdenes -->
     <Label text="Órdenes registradas" styleClass="section-label"/>
     <TableView fx:id="tablaOrdenes" VBox.vgrow="ALWAYS">
         <columns>
