@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="taller.viewcontroller.BicicletaController"
+      spacing="16" styleClass="view-root">
+    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+    <Label text="🚲  Gestión de Bicicletas" styleClass="view-title"/>
+
+    <TitledPane text="Nueva Bicicleta" collapsible="false" styleClass="form-pane">
+        <GridPane hgap="12" vgap="10">
+            <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+            <columnConstraints>
+                <ColumnConstraints minWidth="120" maxWidth="140"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+                <ColumnConstraints minWidth="120" maxWidth="140"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Serial / Marco:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="txtSerial" promptText="Ej: SER-001"
+                       GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Marca:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+            <TextField fx:id="txtMarca" promptText="Ej: Trek"
+                       GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+            <Label text="Tipo:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <ComboBox fx:id="cmbTipo" maxWidth="Infinity"
+                      GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Color:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            <TextField fx:id="txtColor" promptText="Ej: Rojo"
+                       GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+            <Label text="Año:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="txtAnio" promptText="Ej: 2021"
+                       GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label text="ID Cliente:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+            <TextField fx:id="txtIdCliente" promptText="ID del propietario"
+                       GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+
+            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3"
+                  GridPane.columnSpan="4">
+                <Button text="Registrar" onAction="#registrar" styleClass="btn-primary"/>
+                <Button text="Limpiar"   onAction="#limpiar"   styleClass="btn-secondary"/>
+                <Label fx:id="lblMensaje"/>
+            </HBox>
+        </GridPane>
+    </TitledPane>
+
+    <Label text="Bicicletas registradas" styleClass="section-label"/>
+    <TableView fx:id="tablaBicicletas" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colSerial"      text="Serial"       prefWidth="110"/>
+            <TableColumn fx:id="colMarca"       text="Marca"        prefWidth="110"/>
+            <TableColumn fx:id="colTipo"        text="Tipo"         prefWidth="90"/>
+            <TableColumn fx:id="colColor"       text="Color"        prefWidth="80"/>
+            <TableColumn fx:id="colAnio"        text="Año"          prefWidth="60"/>
+            <TableColumn fx:id="colPropietario" text="Propietario"  prefWidth="180"/>
+        </columns>
+        <placeholder><Label text="Sin bicicletas registradas"/></placeholder>
+    </TableView>
+
+</VBox>

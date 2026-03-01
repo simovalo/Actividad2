@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="taller.viewcontroller.ConsultasController"
+      spacing="16" styleClass="view-root">
+    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+    <Label text="🔍  Consultas" styleClass="view-title"/>
+
+    <!-- ── Tres paneles de búsqueda ── -->
+    <HBox spacing="16">
+        <!-- F5 Historial -->
+        <TitledPane text="📋 Historial por bicicleta" collapsible="false"
+                    styleClass="form-pane" HBox.hgrow="ALWAYS">
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <Label text="Serial:"/>
+                <TextField fx:id="txtSerialHistorial" promptText="Serial bicicleta"
+                           HBox.hgrow="ALWAYS"/>
+                <Button text="Buscar" onAction="#buscarHistorial" styleClass="btn-primary"/>
+            </HBox>
+        </TitledPane>
+
+        <!-- F6 Por fecha -->
+        <TitledPane text="📅 Órdenes por fecha" collapsible="false"
+                    styleClass="form-pane" HBox.hgrow="ALWAYS">
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <Label text="Fecha:"/>
+                <DatePicker fx:id="dpFechaConsulta" HBox.hgrow="ALWAYS"/>
+                <Button text="Buscar" onAction="#buscarPorFecha" styleClass="btn-primary"/>
+            </HBox>
+        </TitledPane>
+
+        <!-- F7 Reporte costos -->
+        <TitledPane text="💰 Costos por cliente" collapsible="false"
+                    styleClass="form-pane" HBox.hgrow="ALWAYS">
+            <VBox spacing="8">
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="ID:"/>
+                    <TextField fx:id="txtIdClienteReporte" promptText="ID del cliente"
+                               HBox.hgrow="ALWAYS"/>
+                    <Button text="Calcular" onAction="#calcularReporte" styleClass="btn-primary"/>
+                </HBox>
+                <Label fx:id="lblResultadoReporte"/>
+            </VBox>
+        </TitledPane>
+    </HBox>
+
+    <Label fx:id="lblTituloHistorial" styleClass="section-label" text="Resultados"/>
+    <Label fx:id="lblMensaje"/>
+
+    <TableView fx:id="tablaResultados" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNumero"    text="#"          prefWidth="50"/>
+            <TableColumn fx:id="colFecha"     text="Fecha"      prefWidth="100"/>
+            <TableColumn fx:id="colBicicleta" text="Bicicleta"  prefWidth="180"/>
+            <TableColumn fx:id="colMecanico"  text="Mecánico"   prefWidth="150"/>
+            <TableColumn fx:id="colMotivo"    text="Motivo"     prefWidth="180"/>
+            <TableColumn fx:id="colCosto"     text="Costo ($)"  prefWidth="100"/>
+        </columns>
+        <placeholder><Label text="Realiza una consulta para ver resultados"/></placeholder>
+    </TableView>
+
+</VBox>

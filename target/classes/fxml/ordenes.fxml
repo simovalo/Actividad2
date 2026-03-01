@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="taller.viewcontroller.OrdenController"
+      spacing="16" styleClass="view-root">
+    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+    <Label text="📋  Órdenes de Servicio" styleClass="view-title"/>
+
+    <!-- ── FORMULARIO NUEVA ORDEN ── -->
+    <TitledPane text="Nueva Orden" collapsible="false" styleClass="form-pane">
+        <GridPane hgap="12" vgap="10">
+            <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+            <columnConstraints>
+                <ColumnConstraints minWidth="130" maxWidth="150"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+                <ColumnConstraints minWidth="130" maxWidth="150"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Serial bicicleta:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="txtSerial" promptText="Serial de la bicicleta"
+                       GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Código mecánico:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+            <TextField fx:id="txtCodigoMecanico" promptText="Código del mecánico"
+                       GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+            <Label text="Fecha ingreso:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <DatePicker fx:id="dpFecha" maxWidth="Infinity"
+                        GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Costo total ($):" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            <TextField fx:id="txtCosto" promptText="Ej: 85000"
+                       GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+            <Label text="Motivo:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="txtMotivo" promptText="Motivo del servicio"
+                       GridPane.columnIndex="1" GridPane.rowIndex="2"
+                       GridPane.columnSpan="3"/>
+
+            <Label text="Diagnóstico:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextArea fx:id="txaDiagnostico" promptText="Diagnóstico técnico"
+                      prefRowCount="2"
+                      GridPane.columnIndex="1" GridPane.rowIndex="3"
+                      GridPane.columnSpan="3"/>
+
+            <Label text="Trabajos:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <TextArea fx:id="txaTrabajos" promptText="Trabajos realizados"
+                      prefRowCount="2"
+                      GridPane.columnIndex="1" GridPane.rowIndex="4"
+                      GridPane.columnSpan="3"/>
+
+            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5"
+                  GridPane.columnSpan="4">
+                <Button text="Crear Orden" onAction="#crearOrden" styleClass="btn-primary"/>
+                <Button text="Limpiar"     onAction="#limpiar"    styleClass="btn-secondary"/>
+                <Label fx:id="lblMensaje"/>
+            </HBox>
+        </GridPane>
+    </TitledPane>
+
+    <!-- ── ACTUALIZAR ESTADO ── -->
+    <TitledPane text="Actualizar estado de orden (seleccionar fila en tabla)" collapsible="false" styleClass="form-pane">
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+            <Label text="Estado:"/>
+            <ComboBox fx:id="cmbEstado" prefWidth="160"/>
+            <Button text="Actualizar Estado" onAction="#actualizarEstado" styleClass="btn-primary"/>
+            <Label fx:id="lblMensajeEstado"/>
+        </HBox>
+    </TitledPane>
+
+    <Label text="Órdenes registradas" styleClass="section-label"/>
+    <TableView fx:id="tablaOrdenes" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNumero"    text="#"         prefWidth="45"/>
+            <TableColumn fx:id="colFecha"     text="Fecha"     prefWidth="95"/>
+            <TableColumn fx:id="colBicicleta" text="Bicicleta" prefWidth="165"/>
+            <TableColumn fx:id="colMecanico"  text="Mecánico"  prefWidth="140"/>
+            <TableColumn fx:id="colMotivo"    text="Motivo"    prefWidth="160"/>
+            <TableColumn fx:id="colEstado"    text="Estado"    prefWidth="100"/>
+            <TableColumn fx:id="colCosto"     text="Costo ($)" prefWidth="95"/>
+        </columns>
+        <placeholder><Label text="Sin órdenes registradas"/></placeholder>
+    </TableView>
+
+</VBox>

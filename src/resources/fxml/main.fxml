@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="taller.viewcontroller.MainController"
+            prefWidth="960" prefHeight="680">
+
+    <!-- ── SIDEBAR ── -->
+    <left>
+        <VBox styleClass="sidebar" spacing="4" prefWidth="190">
+            <padding><Insets top="20" right="12" bottom="20" left="12"/></padding>
+
+            <!-- Datos del taller -->
+            <Label text="🚲" style="-fx-font-size:28px; -fx-text-fill:#4da6ff;"/>
+            <Label fx:id="lblNombreTaller" styleClass="sidebar-title" wrapText="true"/>
+            <Label fx:id="lblDireccionTaller" styleClass="sidebar-subtitle" wrapText="true"/>
+            <Label fx:id="lblTelefonoTaller"  styleClass="sidebar-subtitle"/>
+
+            <Separator style="-fx-padding: 10 0 6 0;"/>
+
+            <Label text="MENÚ" styleClass="sidebar-menu-label"/>
+
+            <Button text="👤  Clientes"   onAction="#showClientes"   styleClass="nav-btn" maxWidth="Infinity"/>
+            <Button text="🚲  Bicicletas" onAction="#showBicicletas" styleClass="nav-btn" maxWidth="Infinity"/>
+            <Button text="🔧  Mecánicos"  onAction="#showMecanicos"  styleClass="nav-btn" maxWidth="Infinity"/>
+            <Button text="📋  Órdenes"    onAction="#showOrdenes"    styleClass="nav-btn" maxWidth="Infinity"/>
+            <Button text="🔍  Consultas"  onAction="#showConsultas"  styleClass="nav-btn" maxWidth="Infinity"/>
+        </VBox>
+    </left>
+
+    <!-- ── CONTENIDO PRINCIPAL ── -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area"/>
+    </center>
+
+</BorderPane>

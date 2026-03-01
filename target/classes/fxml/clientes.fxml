@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="taller.viewcontroller.ClienteController"
+      spacing="16" styleClass="view-root">
+    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+    <Label text="👤  Gestión de Clientes" styleClass="view-title"/>
+
+    <!-- ── FORMULARIO ── -->
+    <TitledPane text="Nuevo Cliente" collapsible="false" styleClass="form-pane">
+        <GridPane hgap="12" vgap="10">
+            <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+            <columnConstraints>
+                <ColumnConstraints minWidth="120" maxWidth="140"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+                <ColumnConstraints minWidth="120" maxWidth="140"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Nombre completo:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="txtNombre" promptText="Ej: Juan Pérez"
+                       GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Identificación:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+            <TextField fx:id="txtId" promptText="Ej: 1012345678"
+                       GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+            <Label text="Teléfono:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="txtTelefono" promptText="Ej: 3001234567"
+                       GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Dirección:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            <TextField fx:id="txtDireccion" promptText="Ej: Calle 123 # 45-67"
+                       GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+            <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="2"
+                  GridPane.columnSpan="4">
+                <Button text="Registrar" onAction="#registrar" styleClass="btn-primary"/>
+                <Button text="Limpiar"   onAction="#limpiar"   styleClass="btn-secondary"/>
+                <Label fx:id="lblMensaje"/>
+            </HBox>
+        </GridPane>
+    </TitledPane>
+
+    <!-- ── TABLA ── -->
+    <Label text="Clientes registrados" styleClass="section-label"/>
+    <TableView fx:id="tablaClientes" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNombre"    text="Nombre"    prefWidth="200"/>
+            <TableColumn fx:id="colId"        text="ID"        prefWidth="130"/>
+            <TableColumn fx:id="colTelefono"  text="Teléfono"  prefWidth="130"/>
+            <TableColumn fx:id="colDireccion" text="Dirección" prefWidth="250"/>
+        </columns>
+        <placeholder><Label text="Sin clientes registrados"/></placeholder>
+    </TableView>
+
+</VBox>

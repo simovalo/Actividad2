@@ -1,0 +1,150 @@
+/* ── Fuente base ── */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: #f0f2f5;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+    -fx-background-color: #1a2535;
+}
+
+.sidebar-title {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.sidebar-subtitle {
+    -fx-text-fill: #8899aa;
+    -fx-font-size: 11px;
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #c8d8e8;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 8 12 8 12;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.nav-btn:hover {
+    -fx-background-color: #2a3b52;
+    -fx-text-fill: #ffffff;
+}
+
+/* ── Content area ── */
+.content-area {
+    -fx-background-color: #f0f2f5;
+    -fx-padding: 0;
+}
+
+/* ── View root ── */
+.view-root {
+    -fx-background-color: #f0f2f5;
+}
+
+.view-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a2535;
+}
+
+.section-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #445566;
+}
+
+/* ── Form pane ── */
+.form-pane {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    -fx-border-color: #dde3ea;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 6, 0, 0, 2);
+}
+
+.form-pane > .title {
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-text-fill: #334455;
+}
+
+/* ── Botones ── */
+.btn-primary {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 7 18 7 18;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.btn-secondary {
+    -fx-background-color: #e5e7eb;
+    -fx-text-fill: #374151;
+    -fx-background-radius: 6;
+    -fx-padding: 7 18 7 18;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #d1d5db;
+}
+
+/* ── Tabla ── */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    -fx-border-color: #dde3ea;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 6, 0, 0, 2);
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f8fafc;
+}
+
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #334455;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #dbeafe;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: #1e3a5f;
+}
+
+/* ── TextField ── */
+.text-field, .text-area, .date-picker .text-field, .combo-box .text-field {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #cdd5df;
+    -fx-border-width: 1;
+    -fx-padding: 5 8 5 8;
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: #2563eb;
+}
+
+/* ── Sidebar extras ── */
+.sidebar-menu-label {
+    -fx-text-fill: #556677;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 0 2 4;
+}
