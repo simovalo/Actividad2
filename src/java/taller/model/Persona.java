@@ -4,10 +4,7 @@ package taller.model;
  * Clase abstracta que representa una persona dentro del sistema del taller.
  *
  * Encapsula los atributos comunes a todo individuo registrado:
- * nombre completo y teléfono de contacto. Implementa la interfaz
- * de forma parcial, dejando {@link #getId()} y
- * {@link #getDescripcion()} como métodos abstractos para que cada
- * subclase los defina según su propia semántica de identidad.</p>
+ * nombre completo y teléfono de contacto.
  *
  * @author Simon Valencia
  * @version 1.0
