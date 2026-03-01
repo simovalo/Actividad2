@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<SplitPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.tallerbici.viewController.ClienteController"
+           orientation="HORIZONTAL" dividerPositions="0.4"
+           style="-fx-padding: 10;">
+
+    <!-- PANEL IZQUIERDO: Formulario -->
+    <VBox spacing="10" style="-fx-padding: 15; -fx-background-color: white;
+                               -fx-background-radius: 8; -fx-effect: dropshadow(gaussian,#ccc,4,0,0,2);">
+        <Label text="Registrar / Editar Cliente"
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1A237E;"/>
+
+        <!-- Indicador de modo edición -->
+        <Label fx:id="lblModoEdicion" text=""
+               style="-fx-text-fill: #E65100; -fx-font-weight: bold; -fx-font-size: 11px;"/>
+        <Separator/>
+
+        <Label text="Número de Cédula *"/>
+        <TextField fx:id="txtCedula" promptText="Ej: 1012345678"/>
+
+        <Label text="Nombre Completo *"/>
+        <TextField fx:id="txtNombre" promptText="Ej: Carlos Andrés Gómez"/>
+
+        <Label text="Teléfono *"/>
+        <TextField fx:id="txtTelefono" promptText="Ej: 3001234567"/>
+
+        <Label text="Dirección *"/>
+        <TextField fx:id="txtDireccion" promptText="Ej: Cra 15 #23-45, Bogotá"/>
+
+        <!-- Botón dinámico: cambia entre Registrar y Guardar Cambios -->
+        <Button fx:id="btnAccion" text="✅ Registrar Cliente"
+                onAction="#accionPrincipal" maxWidth="Infinity"
+                style="-fx-background-color: #1A237E; -fx-text-fill: white;
+                       -fx-font-weight: bold; -fx-padding: 8 16 8 16;"/>
+
+        <Button fx:id="btnLimpiar" text="🗑 Limpiar / Cancelar"
+                onAction="#limpiarFormulario" maxWidth="Infinity"
+                style="-fx-background-color: #757575; -fx-text-fill: white;"/>
+
+        <Label fx:id="lblMensaje" text="" wrapText="true"
+               style="-fx-font-size: 12px;"/>
+    </VBox>
+
+    <!-- PANEL DERECHO: Lista + acciones -->
+    <VBox spacing="8" style="-fx-padding: 15; -fx-background-color: white;
+                              -fx-background-radius: 8; -fx-effect: dropshadow(gaussian,#ccc,4,0,0,2);">
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <Label text="Clientes Registrados"
+                   style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1A237E;"/>
+            <TextField fx:id="txtBuscarCliente" promptText="🔍 Buscar..."
+                       HBox.hgrow="ALWAYS" onKeyReleased="#filtrarClientes"/>
+        </HBox>
+        <Separator/>
+        <ListView fx:id="listClientes" VBox.vgrow="ALWAYS"
+                  onMouseClicked="#mostrarDetalleCliente"/>
+
+        <!-- Botón de edición debajo de la lista -->
+        <Button fx:id="btnEditar" text="✏ Editar Seleccionado"
+                onAction="#editarSeleccionado" maxWidth="Infinity"
+                style="-fx-background-color: #283593; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+        <TextArea fx:id="txtDetalleCliente" editable="false" prefRowCount="4"
+                  style="-fx-font-family: monospace; -fx-font-size: 12px;"
+                  promptText="Clic en un cliente para ver su detalle..."/>
+    </VBox>
+
+</SplitPane>

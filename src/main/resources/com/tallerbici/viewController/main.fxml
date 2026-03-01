@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.tallerbici.viewController.MainController"
+            prefWidth="1000" prefHeight="700"
+            style="-fx-background-color: #F5F5F5;">
+
+    <!-- ENCABEZADO -->
+    <top>
+        <VBox style="-fx-background-color: #1A237E; -fx-padding: 12 20 12 20;">
+            <Label text="🚲 TallerBici - Sistema de Gestión de Mantenimiento"
+                   style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Programación II · SOLID + Singleton + Builder"
+                   style="-fx-text-fill: #90CAF9; -fx-font-size: 12px;"/>
+        </VBox>
+    </top>
+
+    <!-- CONTENIDO PRINCIPAL: TabPane -->
+    <center>
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE"
+                 style="-fx-tab-min-width: 130px;">
+
+            <!-- TAB 1: Clientes -->
+            <Tab text="👤 Clientes">
+                <fx:include source="clientes.fxml" fx:id="clientesView"/>
+            </Tab>
+
+            <!-- TAB 2: Bicicletas -->
+            <Tab text="🚲 Bicicletas">
+                <fx:include source="bicicletas.fxml" fx:id="bicicletasView"/>
+            </Tab>
+
+            <!-- TAB 3: Mecánicos -->
+            <Tab text="🔧 Mecánicos">
+                <fx:include source="mecanicos.fxml" fx:id="mecanicosView"/>
+            </Tab>
+
+            <!-- TAB 4: Órdenes -->
+            <Tab text="📋 Órdenes">
+                <fx:include source="ordenes.fxml" fx:id="ordenesView"/>
+            </Tab>
+
+            <!-- TAB 5: Historial -->
+            <Tab text="🔍 Historial">
+                <fx:include source="historial.fxml" fx:id="historialView"/>
+            </Tab>
+
+            <!-- TAB 6: Repuestos (funcionalidad propia) -->
+            <Tab text="⚙ Repuestos">
+                <fx:include source="repuestos.fxml" fx:id="repuestosView"/>
+            </Tab>
+
+        </TabPane>
+    </center>
+
+    <!-- PIE DE PÁGINA -->
+    <bottom>
+        <HBox style="-fx-background-color: #E8EAF6; -fx-padding: 6 14 6 14;"
+              alignment="CENTER_LEFT" spacing="10">
+            <Label fx:id="lblEstado"
+                   text="✅ Sistema listo"
+                   style="-fx-text-fill: #1A237E; -fx-font-size: 12px;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

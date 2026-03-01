@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.tallerbici.viewController.HistorialController"
+      spacing="14" style="-fx-padding: 20; -fx-background-color: #F5F5F5;">
+
+    <Label text="Consultar Historial"
+           style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1A237E;"/>
+    <Separator/>
+
+    <!-- Búsqueda por serial -->
+    <HBox spacing="10" alignment="CENTER_LEFT"
+          style="-fx-padding: 15; -fx-background-color: white; -fx-background-radius: 8;
+                 -fx-effect: dropshadow(gaussian,#ccc,4,0,0,2);">
+        <VBox spacing="6" HBox.hgrow="ALWAYS">
+            <Label text="🔍 Historial por Serial de Bicicleta" style="-fx-font-weight: bold;"/>
+            <HBox spacing="8">
+                <TextField fx:id="txtSerialBuscar" promptText="Ingresa el serial de la bicicleta"
+                           HBox.hgrow="ALWAYS"/>
+                <Button text="Buscar" onAction="#buscarPorSerial"
+                        style="-fx-background-color: #1A237E; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+    </HBox>
+
+    <!-- Búsqueda por fecha -->
+    <HBox spacing="10" alignment="CENTER_LEFT"
+          style="-fx-padding: 15; -fx-background-color: white; -fx-background-radius: 8;
+                 -fx-effect: dropshadow(gaussian,#ccc,4,0,0,2);">
+        <VBox spacing="6" HBox.hgrow="ALWAYS">
+            <Label text="📅 Órdenes por Fecha" style="-fx-font-weight: bold;"/>
+            <HBox spacing="8">
+                <DatePicker fx:id="dateFechaBuscar" HBox.hgrow="ALWAYS"/>
+                <Button text="Buscar" onAction="#buscarPorFecha"
+                        style="-fx-background-color: #283593; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+        </VBox>
+    </HBox>
+
+    <!-- Resultados -->
+    <VBox spacing="8" VBox.vgrow="ALWAYS"
+          style="-fx-padding: 15; -fx-background-color: white; -fx-background-radius: 8;
+                 -fx-effect: dropshadow(gaussian,#ccc,4,0,0,2);">
+        <Label fx:id="lblResultado" text="Resultados:"
+               style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #1A237E;"/>
+        <ListView fx:id="listResultados" VBox.vgrow="ALWAYS"
+                  onMouseClicked="#mostrarDetalleHistorial"/>
+        <TextArea fx:id="txtDetalleHistorial" editable="false" prefRowCount="7"
+                  style="-fx-font-family: monospace; -fx-font-size: 12px;"
+                  promptText="Selecciona un resultado para ver su detalle..."/>
+    </VBox>
+
+</VBox>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<SplitPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.tallerbici.viewController.OrdenController"
+           orientation="HORIZONTAL" dividerPositions="0.42"
+           style="-fx-padding: 10;">
+
+    <VBox spacing="8" style="-fx-padding: 15; -fx-background-color: white;
+                               -fx-background-radius: 8; -fx-effect: dropshadow(gaussian,#ccc,4,0,0,2);">
+        <Label text="Nueva / Editar Orden de Servicio"
+               style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1A237E;"/>
+        <Label fx:id="lblModoEdicion" text="" wrapText="true"
+               style="-fx-text-fill: #E65100; -fx-font-size: 11px; -fx-font-weight: bold;"/>
+        <Separator/>
+
+        <Label text="Bicicleta (Serial) *"/>
+        <ComboBox fx:id="cmbBicicleta" maxWidth="Infinity" promptText="Seleccionar bicicleta"/>
+
+        <Label text="Mecánico Responsable *"/>
+        <ComboBox fx:id="cmbMecanico" maxWidth="Infinity" promptText="Seleccionar mecánico"/>
+
+        <Label text="Motivo del Servicio *"/>
+        <TextArea fx:id="txtMotivo" promptText="Describe el motivo del ingreso..."
+                  prefRowCount="2" wrapText="true"/>
+
+        <Label text="Diagnóstico"/>
+        <TextArea fx:id="txtDiagnostico" promptText="Diagnóstico del mecánico..."
+                  prefRowCount="2" wrapText="true"/>
+
+        <Label text="Trabajos Realizados"/>
+        <TextArea fx:id="txtTrabajos" promptText="Trabajos realizados..."
+                  prefRowCount="2" wrapText="true"/>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Costo Total ($)"/>
+            <TextField fx:id="txtCosto" promptText="0.00" HBox.hgrow="ALWAYS"/>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Estado"/>
+            <ComboBox fx:id="cmbEstado" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+        </HBox>
+
+        <Button fx:id="btnAccion" text="📋 Crear Orden"
+                onAction="#accionPrincipal" maxWidth="Infinity"
+                style="-fx-background-color: #1A237E; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        <Button fx:id="btnLimpiar" text="🗑 Limpiar / Cancelar"
+                onAction="#limpiarFormulario" maxWidth="Infinity"
+                style="-fx-background-color: #757575; -fx-text-fill: white;"/>
+        <Label fx:id="lblMensaje" text="" wrapText="true" style="-fx-font-size: 12px;"/>
+    </VBox>
+
+    <VBox spacing="8" style="-fx-padding: 15; -fx-background-color: white;
+                              -fx-background-radius: 8; -fx-effect: dropshadow(gaussian,#ccc,4,0,0,2);">
+        <Label text="Órdenes de Servicio"
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1A237E;"/>
+        <Separator/>
+        <ListView fx:id="listOrdenes" VBox.vgrow="ALWAYS"
+                  onMouseClicked="#mostrarDetalleOrden"/>
+        <Button text="✏ Editar Seleccionada"
+                onAction="#editarSeleccionado" maxWidth="Infinity"
+                style="-fx-background-color: #283593; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        <TextArea fx:id="txtDetalleOrden" editable="false" prefRowCount="6"
+                  style="-fx-font-family: monospace; -fx-font-size: 12px;"
+                  promptText="Selecciona una orden para ver su detalle..."/>
+    </VBox>
+
+</SplitPane>
