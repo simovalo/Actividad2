@@ -95,12 +95,12 @@ public class BicicletaController {
         cmbTipo.getSelectionModel().selectFirst();
     }
 
-    //Muestra un mensaje de exito en color verde
+    //Muestra un mensaje de exito
     private void mostrarExito(String msg) {
         lblMensaje.setStyle("-fx-text-fill: #27ae60;"); lblMensaje.setText(msg);
     }
 
-    //Muestra un mensaje de error en color rojo
+    //Muestra un mensaje de error
     private void mostrarError(String msg) {
         lblMensaje.setStyle("-fx-text-fill: #e74c3c;"); lblMensaje.setText(msg);
     }
