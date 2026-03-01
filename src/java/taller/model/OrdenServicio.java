@@ -2,15 +2,16 @@ package taller.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 /**
- * Representa una orden de servicio generada en el taller.
+ * representa una orden de servicio generada.
  *
- * <p>Agrupa la información completa de un servicio: bicicleta atendida,
+ * <p>agrupa la información completa de un servicio: bicicleta atendida,
  * mecánico responsable, motivo, diagnóstico, trabajos, costo y el
- * {@link EstadoOrden} actual de la orden (PENDIENTE → EN_PROCESO → COMPLETADA).</p>
+ * EstadoOrden actual de la orden (PENDIENTE > EN_PROCESO > COMPLETADA).</p>
  *
- * <p>El número de orden se asigna automáticamente de forma secuencial.</p>
+ * <p>el número de orden se asigna automáticamente de forma secuencial.</p>
  *
  * @author Simon Valencia
  * @version 1.0
@@ -18,56 +19,38 @@ import java.time.LocalTime;
  */
 public class OrdenServicio {
 
-    /** Contador estático para la numeración automática de órdenes. */
     private static int contador = 1;
-
-    /** Número único y secuencial de la orden. */
     private final int numeroOrden;
-
-    /** Fecha de ingreso de la bicicleta al taller. */
     private LocalDate fechaIngreso;
-
-    /** Hora de ingreso al taller. */
     private LocalTime horaIngreso;
-
-    /** Bicicleta sobre la que se ejecuta el servicio. */
     private final Bicicleta bicicleta;
-
-    /** Mecánico responsable del servicio. */
     private final Mecanico mecanico;
-
-    /** Motivo o razón declarada por el cliente. */
     private String motivo;
-
-    /** Diagnóstico técnico del mecánico. */
     private String diagnostico;
-
-    /** Descripción de los trabajos ejecutados. */
     private String trabajosRealizados;
-
-    /** Costo total del servicio (≥ 0). */
     private double costoTotal;
+    private List<TallerBicicletas> ownedByTallerBicicletas;
 
     /**
-     * Estado actual de la orden dentro del ciclo de vida del servicio.
-     * Inicia como {@link EstadoOrden#PENDIENTE} al crearse.
+     * estado actual de la orden.
+     * Inicia como EstadoOrden#PENDIENTE al crearse.
      */
     private EstadoOrden estado;
 
-    // ── Constructor ────────────────────────────────────────────────────────────
+    // Constructor
 
     /**
-     * Crea una orden de servicio, asigna un número secuencial y la marca
-     * como {@link EstadoOrden#PENDIENTE}.
+     * crea una orden de servicio, asigna un número secuencial y la marca
+     * como EstadoOrden#PENDIENTE.
      *
-     * @param fechaIngreso       Fecha de ingreso (no nula, no puede ser futura).
-     * @param horaIngreso        Hora de ingreso (no nula).
-     * @param bicicleta          Bicicleta atendida (no nula).
-     * @param mecanico           Mecánico responsable (no nulo).
-     * @param motivo             Motivo del servicio (no nulo, no vacío).
-     * @param diagnostico        Diagnóstico técnico (no nulo, no vacío).
-     * @param trabajosRealizados Trabajos efectuados (no nulo, no vacío).
-     * @param costoTotal         Costo total (no negativo).
+     * @param fechaIngreso       fecha de ingreso (no nula, no puede ser futura).
+     * @param horaIngreso        hora de ingreso (no nula).
+     * @param bicicleta          bicicleta atendida (no nula).
+     * @param mecanico           mecánico responsable (no nulo).
+     * @param motivo             motivo del servicio (no nulo, no vacío).
+     * @param diagnostico        diagnóstico técnico (no nulo, no vacío).
+     * @param trabajosRealizados trabajos efectuados (no nulo, no vacío).
+     * @param costoTotal         costo total (no negativo).
      * @throws IllegalArgumentException si algún parámetro no pasa la validación.
      */
     public OrdenServicio(LocalDate fechaIngreso, LocalTime horaIngreso,
@@ -96,63 +79,46 @@ public class OrdenServicio {
         this.trabajosRealizados = trabajosRealizados.trim();
         this.costoTotal         = costoTotal;
         this.estado             = EstadoOrden.PENDIENTE;    // estado inicial
+        this.ownedByTallerBicicletas = List.of();
     }
 
     // ── Control del contador ───────────────────────────────────────────────────
 
     /**
-     * Reinicia el contador de órdenes a 1.
-     * <b>Solo usar en pruebas unitarias.</b>
+     * reinicia el contador de órdenes a 1.
+     * <b>solo se usa en pruebas unitarias.</b>
      */
     public static void resetContador() { contador = 1; }
 
-    // ── Getters ────────────────────────────────────────────────────────────────
+    // Getters
 
-    /** @return número secuencial único de la orden. */
     public int         getNumeroOrden()        { return numeroOrden; }
-
-    /** @return fecha de ingreso de la bicicleta. */
     public LocalDate   getFechaIngreso()       { return fechaIngreso; }
-
-    /** @return hora de ingreso de la bicicleta. */
     public LocalTime   getHoraIngreso()        { return horaIngreso; }
-
-    /** @return bicicleta atendida en esta orden. */
     public Bicicleta   getBicicleta()          { return bicicleta; }
-
-    /** @return mecánico responsable de esta orden. */
     public Mecanico    getMecanico()           { return mecanico; }
-
-    /** @return motivo del servicio. */
     public String      getMotivo()             { return motivo; }
-
-    /** @return diagnóstico técnico. */
     public String      getDiagnostico()        { return diagnostico; }
-
-    /** @return trabajos realizados. */
     public String      getTrabajosRealizados() { return trabajosRealizados; }
-
-    /** @return costo total del servicio. */
     public double      getCostoTotal()         { return costoTotal; }
-
-    /** @return estado actual de la orden ({@link EstadoOrden}). */
     public EstadoOrden getEstado()             { return estado; }
+    public List<TallerBicicletas> getOwnedByTallerBicicletas() { return ownedByTallerBicicletas; }
 
-    // ── Setters ────────────────────────────────────────────────────────────────
+    // Setters
 
-    /** @param diagnostico Nuevo diagnóstico (no nulo, no vacío). */
+    /** @param diagnostico nuevo diagnóstico (no nulo, no vacío). */
     public void setDiagnostico(String diagnostico) {
         Validaciones.requerido(diagnostico, "El diagnóstico");
         this.diagnostico = diagnostico.trim();
     }
 
-    /** @param trabajosRealizados Nuevos trabajos (no nulo, no vacío). */
+    /** @param trabajosRealizados nuevo trabajos (no nulo, no vacío). */
     public void setTrabajosRealizados(String trabajosRealizados) {
         Validaciones.requerido(trabajosRealizados, "Los trabajos realizados");
         this.trabajosRealizados = trabajosRealizados.trim();
     }
 
-    /** @param costoTotal Nuevo costo (no negativo). */
+    /** @param costoTotal nuevo costo (no negativo). */
     public void setCostoTotal(double costoTotal) {
         Validaciones.costo(costoTotal);
         this.costoTotal = costoTotal;
@@ -161,7 +127,7 @@ public class OrdenServicio {
     /**
      * Actualiza el estado de la orden.
      *
-     * @param estado Nuevo estado (no nulo).
+     * @param estado nuevo estado (no nulo).
      * @throws IllegalArgumentException si el estado es nulo.
      */
     public void setEstado(EstadoOrden estado) {

@@ -11,7 +11,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 /**
  * Controlador de la vista de gestión de clientes.
  *
- * Permite registrar nuevos clientes mediante un formulario con validación de campos y visualizar la lista en una tabla.
+ * <p>Permite registrar nuevos clientes mediante un formulario con
+ * validación de campos y visualizar la lista en una tabla.</p>
  *
  * @author Samuel Marin
  * @version 1.0
@@ -32,7 +33,10 @@ public class ClienteController {
     @FXML private TableColumn<Cliente, String> colTelefono;
     @FXML private TableColumn<Cliente, String> colDireccion;
 
-    //Configura las columnas de la tabla y muestra los clientes guardados
+    /**
+     * Configura columnas y carga los datos existentes.
+     * Llamado automáticamente por el FXMLLoader.
+     */
     @FXML
     public void initialize() {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -42,7 +46,10 @@ public class ClienteController {
         refrescarTabla();
     }
 
-    //Registra un nuevo cliente
+    /**
+     * Valida los campos del formulario y registra el nuevo cliente.
+     * Muestra un mensaje de éxito o de error según el resultado.
+     */
     @FXML
     private void registrar() {
         String nombre    = txtNombre.getText().trim();
@@ -63,26 +70,22 @@ public class ClienteController {
         }
     }
 
-    //Limpia el formulario y el mensaje
+    /** Limpia el formulario y el mensaje visible. */
     @FXML
     private void limpiar() { limpiarFormulario(); lblMensaje.setText(""); }
 
-    //Actualiza la tabla con la lista actual de clientes
     private void refrescarTabla() {
         tablaClientes.setItems(FXCollections.observableArrayList(taller.getClientes()));
     }
 
-    //Borra el contenido de los campos de texto
     private void limpiarFormulario() {
         txtNombre.clear(); txtId.clear(); txtTelefono.clear(); txtDireccion.clear();
     }
 
-    //Muestra un mensaje de exito en la pantalla
     private void mostrarExito(String msg) {
         lblMensaje.setStyle("-fx-text-fill: #27ae60;"); lblMensaje.setText(msg);
     }
 
-    //Muestra un mensaje de error en la pantalla
     private void mostrarError(String msg) {
         lblMensaje.setStyle("-fx-text-fill: #e74c3c;"); lblMensaje.setText(msg);
     }

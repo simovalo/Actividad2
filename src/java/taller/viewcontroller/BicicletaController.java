@@ -12,7 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 /**
  * Controlador de la vista de gestión de bicicletas.
  *
- * Permite registrar nuevas bicicletas asociándolas a un cliente existente mediante su ID, y visualizar todas las bicicletas en una tabla
+ * <p>Permite registrar nuevas bicicletas asociándolas a un cliente
+ * existente mediante su ID, y visualizar todas las bicicletas en una tabla.</p>
  *
  * @author Juan Manuel Vera
  * @version 1.0
@@ -37,7 +38,9 @@ public class BicicletaController {
     @FXML private TableColumn<Bicicleta, Integer> colAnio;
     @FXML private TableColumn<Bicicleta, String>  colPropietario;
 
-    // Inicializa el combo, configura la tabla y carga los datos.
+    /**
+     * Puebla el ComboBox con los tipos de bicicleta, configura columnas y carga datos.
+     */
     @FXML
     public void initialize() {
         cmbTipo.setItems(FXCollections.observableArrayList(Bicicleta.Tipo.values()));
@@ -53,7 +56,10 @@ public class BicicletaController {
         refrescarTabla();
     }
 
-    // Valida los campos y registra la nueva bicicleta.
+    /**
+     * Valida los campos y registra la nueva bicicleta.
+     * Verifica que el año sea numérico antes de llamar al modelo.
+     */
     @FXML
     private void registrar() {
         String serial    = txtSerial.getText().trim();
@@ -80,7 +86,6 @@ public class BicicletaController {
         }
     }
 
-    //Limpia el formulario y borra el mensajo
     @FXML
     private void limpiar() { limpiarFormulario(); lblMensaje.setText(""); }
 
@@ -88,19 +93,16 @@ public class BicicletaController {
         tablaBicicletas.setItems(FXCollections.observableArrayList(taller.getBicicletas()));
     }
 
-    //Limpia todos los campos del formulario
     private void limpiarFormulario() {
         txtSerial.clear(); txtMarca.clear(); txtColor.clear();
         txtAnio.clear(); txtIdCliente.clear();
         cmbTipo.getSelectionModel().selectFirst();
     }
 
-    //Muestra un mensaje de exito
     private void mostrarExito(String msg) {
         lblMensaje.setStyle("-fx-text-fill: #27ae60;"); lblMensaje.setText(msg);
     }
 
-    //Muestra un mensaje de error
     private void mostrarError(String msg) {
         lblMensaje.setStyle("-fx-text-fill: #e74c3c;"); lblMensaje.setText(msg);
     }

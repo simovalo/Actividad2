@@ -1,4 +1,3 @@
-<!-- Vista para gestionar mecánicos -->
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
@@ -9,9 +8,8 @@
       spacing="16" styleClass="view-root">
     <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
 
-    <Label text="Gestión de Mecánicos" styleClass="view-title"/>
+    <Label text="🔧  Gestión de Mecánicos" styleClass="view-title"/>
 
-<!-- Formulario de registro -->
     <TitledPane text="Nuevo Mecánico" collapsible="false" styleClass="form-pane">
         <GridPane hgap="12" vgap="10">
             <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
@@ -48,8 +46,6 @@
     </TitledPane>
 
     <Label text="Mecánicos registrados" styleClass="section-label"/>
-
-<!-- Tabla de mecánicos -->
     <TableView fx:id="tablaMecanicos" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="colNombre"       text="Nombre"       prefWidth="200"/>

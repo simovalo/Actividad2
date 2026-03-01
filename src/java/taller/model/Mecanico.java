@@ -1,12 +1,14 @@
 package taller.model;
 
+import java.util.List;
+
 /**
  * Representa un mecánico del taller de bicicletas.
  *
- * <p>Extiende {@link Persona}, heredando nombre y teléfono, y añade
- * los datos propios del mecánico: especialidad técnica y código interno único.</p>
+ * <p>extiende Persona, heredando nombre y teléfono, y añade
+ * los datos propios del mecánico como: especialidad técnica y código interno único.</p>
  *
- * <p>Implementa {@link Identificable} a través de {@link Persona};
+ * <p>implementa Identificable a través de Persona;
  * su identificador único es el código interno del taller.</p>
  *
  * @author Juan Manuel Vera
@@ -16,39 +18,38 @@ package taller.model;
  */
 public class Mecanico extends Persona {
 
-    /** Área técnica de especialización (ej: frenos, suspensión, eléctrica). */
     private String especialidad;
-
-    /** Código interno único o número de certificación del mecánico. */
     private String codigo;
+    private List<TallerBicicletas> ownedByTallerBicicletas;
 
-    // ── Constructor ────────────────────────────────────────────────────────────
+    // Constructor
 
     /**
-     * Crea un nuevo mecánico con sus datos de identificación y especialidad.
+     * crea un nuevo mecánico con sus datos de identificación y especialidad.
      *
-     * <p>Delega la validación y asignación de {@code nombre} y {@code telefono}
-     * al constructor de {@link Persona}.</p>
+     * <p>delega la validación y asignación de nombre y telefono
+     * al constructor de Persona.</p>
      *
-     * @param nombre       Nombre completo (mínimo 3 caracteres).
-     * @param telefono     Teléfono de contacto (7–15 dígitos).
-     * @param especialidad Especialidad técnica (no nula, no vacía).
-     * @param codigo       Código interno único (no nulo, no vacío).
+     * @param nombre       nombre completo (mínimo 3 caracteres).
+     * @param telefono     telefono de contacto (7–15 dígitos).
+     * @param especialidad especialidad técnica (no nula, no vacía).
+     * @param codigo       codigo interno único (no nulo, no vacío).
      * @throws IllegalArgumentException si algún parámetro no pasa la validación.
      */
     public Mecanico(String nombre, String telefono, String especialidad, String codigo) {
-        super(nombre, telefono);                              // hereda nombre y teléfono
-        Validaciones.longitudMinima(nombre, 3, "El nombre del mecánico");
-        Validaciones.requerido(especialidad, "La especialidad del mecánico");
-        Validaciones.requerido(codigo,       "El código del mecánico");
+        super(nombre, telefono);                              // hereda
+        Validaciones.longitudMinima(nombre, 3, "el nombre del mecánico");
+        Validaciones.requerido(especialidad, "la especialidad del mecánico");
+        Validaciones.requerido(codigo,       "el código del mecánico");
         this.especialidad = especialidad.trim();
         this.codigo       = codigo.trim();
+        this.ownedByTallerBicicletas = List.of();
     }
 
-    // ── Identificable ─────────────────────────────────────────────────────────
+    // Identificable
 
     /**
-     * Retorna el código interno del mecánico como clave única.
+     * retorna el código interno del mecánico como clave única.
      *
      * @return código interno del taller.
      */
@@ -56,33 +57,31 @@ public class Mecanico extends Persona {
     public String getId() { return codigo; }
 
     /**
-     * Retorna una descripción legible del mecánico para reportes y UI.
+     * retorna una descripción del mecánico.
      *
-     * @return "Nombre (Especialidad) [Código]".
+     * @return "nombre (especialidad) [codigo]".
      */
     @Override
     public String getDescripcion() {
         return nombre + " (" + especialidad + ") [" + codigo + "]";
     }
 
-    // ── Getters ────────────────────────────────────────────────────────────────
+    // Getters
 
-    /** @return especialidad técnica del mecánico. */
     public String getEspecialidad() { return especialidad; }
-
-    /** @return código interno único del mecánico. */
     public String getCodigo()       { return codigo; }
+    public List<TallerBicicletas> getOwnedByTallerBicicletas() { return ownedByTallerBicicletas; }
 
-    // ── Setters ────────────────────────────────────────────────────────────────
+    // Setters
 
-    /** @param especialidad Nueva especialidad (no nula, no vacía). */
+    /** @param especialidad nueva especialidad (no nula, no vacía). */
     public void setEspecialidad(String especialidad) {
         Validaciones.requerido(especialidad, "La especialidad");
         this.especialidad = especialidad.trim();
     }
 
     /**
-     * @return "Nombre (Especialidad) [Código]" para uso en tablas.
+     * @return "nombre (especialidad) [codigo]" para uso en tablas.
      */
     @Override
     public String toString() {

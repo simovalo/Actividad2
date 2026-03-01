@@ -15,8 +15,13 @@ import java.util.List;
 /**
  * Controlador de la vista de consultas y reportes.
  *
- * Concentra las tres funcionalidades de consulta: Historial de servicios por serial de bicicleta, Órdenes ingresadas en una fecha específica y Costo total acumulado por cliente.
- * 
+ * <p>Concentra las tres funcionalidades de consulta:</p>
+ * <ul>
+ *   <li><b>F5</b> — Historial de servicios por serial de bicicleta.</li>
+ *   <li><b>F6</b> — Órdenes ingresadas en una fecha específica.</li>
+ *   <li><b>F7</b> — Costo total acumulado por cliente.</li>
+ * </ul>
+ *
  * @author Samuel Marin
  * @version 1.0
  */
@@ -40,7 +45,7 @@ public class ConsultasController {
 
     @FXML private Label lblMensaje;
 
-    // Configura la fecha actual y las columnas de la tabla
+    /** Establece la fecha de hoy y configura las columnas de resultados. */
     @FXML
     public void initialize() {
         dpFechaConsulta.setValue(LocalDate.now());
@@ -55,7 +60,9 @@ public class ConsultasController {
         colCosto.setCellValueFactory(new PropertyValueFactory<>("costoTotal"));
     }
 
-    //Busca el historial de servicios por serial de bicicleta y muestra los resultados en la tabla
+    /**
+     * F5 — Consulta todas las órdenes del serial ingresado y las muestra en la tabla.
+     */
     @FXML
     private void buscarHistorial() {
         String serial = txtSerialHistorial.getText().trim();
@@ -66,7 +73,9 @@ public class ConsultasController {
         lblMensaje.setText("");
     }
 
-    //Busca las ordenes registradas en la fecha seleccionada
+    /**
+     * F6 — Filtra y muestra las órdenes de la fecha seleccionada.
+     */
     @FXML
     private void buscarPorFecha() {
         LocalDate fecha = dpFechaConsulta.getValue();
@@ -77,7 +86,9 @@ public class ConsultasController {
         lblMensaje.setText("");
     }
 
-    //Calcula el total acumulado de un cliente y muestra el resultado o error
+    /**
+     * F7 — Calcula y muestra el costo total acumulado del cliente indicado.
+     */
     @FXML
     private void calcularReporte() {
         String id = txtIdClienteReporte.getText().trim();
@@ -94,7 +105,6 @@ public class ConsultasController {
         }
     }
 
-    //Muestra un mensaje de error en la pantalla
     private void mostrarError(String msg) {
         lblMensaje.setStyle("-fx-text-fill: #e74c3c;"); lblMensaje.setText(msg);
     }

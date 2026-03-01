@@ -16,7 +16,8 @@ import java.time.LocalTime;
 /**
  * Controlador de la vista de órdenes de servicio.
  *
- * Permite crear nuevas órdenes (estado inicial: PENDIENTE) y actualizar el estado de cualquier orden seleccionada en la tabla.
+ * <p>Permite crear nuevas órdenes (estado inicial: PENDIENTE) y actualizar
+ * el estado de cualquier orden seleccionada en la tabla.</p>
  *
  * @author Juan Manuel Vera
  * @version 1.0
@@ -25,6 +26,7 @@ public class OrdenController {
 
     private final TallerBicicletas taller = MainApp.getTaller();
 
+    // ── Formulario ─────────────────────────────────────────────────────────────
     @FXML private TextField  txtSerial;
     @FXML private TextField  txtCodigoMecanico;
     @FXML private DatePicker dpFecha;
@@ -34,9 +36,11 @@ public class OrdenController {
     @FXML private TextField  txtCosto;
     @FXML private Label      lblMensaje;
 
+    // ── Actualizar estado ──────────────────────────────────────────────────────
     @FXML private ComboBox<EstadoOrden> cmbEstado;
     @FXML private Label                 lblMensajeEstado;
 
+    // ── Tabla ──────────────────────────────────────────────────────────────────
     @FXML private TableView<OrdenServicio>            tablaOrdenes;
     @FXML private TableColumn<OrdenServicio, Integer> colNumero;
     @FXML private TableColumn<OrdenServicio, String>  colFecha;
@@ -46,7 +50,6 @@ public class OrdenController {
     @FXML private TableColumn<OrdenServicio, String>  colEstado;
     @FXML private TableColumn<OrdenServicio, Double>  colCosto;
 
-    //Configura la fecha, el combo y la tabla
     @FXML
     public void initialize() {
         dpFecha.setValue(LocalDate.now());
@@ -65,6 +68,7 @@ public class OrdenController {
                 new SimpleStringProperty(d.getValue().getEstado().getEtiqueta()));
         colCosto.setCellValueFactory(new PropertyValueFactory<>("costoTotal"));
 
+        // Preseleccionar el estado de la orden al hacer clic en la tabla
         tablaOrdenes.getSelectionModel().selectedItemProperty().addListener(
             (obs, old, sel) -> {
                 if (sel != null) cmbEstado.setValue(sel.getEstado());
@@ -73,7 +77,6 @@ public class OrdenController {
         refrescarTabla();
     }
 
-    //Crea una nueva orden de servicio
     @FXML
     private void crearOrden() {
         String serial   = txtSerial.getText().trim();
@@ -106,7 +109,7 @@ public class OrdenController {
         } catch (IllegalArgumentException e) { mostrarError(e.getMessage()); }
     }
 
-    //Cambia el estado de la orden seleccionada
+    /** Actualiza el estado de la orden seleccionada en la tabla. */
     @FXML
     private void actualizarEstado() {
         OrdenServicio sel = tablaOrdenes.getSelectionModel().getSelectedItem();
@@ -122,27 +125,19 @@ public class OrdenController {
         tablaOrdenes.getSelectionModel().clearSelection();
     }
 
-    //Limpia el formulario y borra el mensaje
     @FXML private void limpiar() { limpiarFormulario(); lblMensaje.setText(""); }
 
-    //Actualiza la tabla con las ordenes actuales
     private void refrescarTabla() {
         tablaOrdenes.setItems(FXCollections.observableArrayList(taller.getOrdenes()));
     }
-
-    //Borra los campos del formulario
     private void limpiarFormulario() {
         txtSerial.clear(); txtCodigoMecanico.clear(); txtMotivo.clear();
         txaDiagnostico.clear(); txaTrabajos.clear(); txtCosto.clear();
         dpFecha.setValue(LocalDate.now());
     }
-
-    //Muestra un mensaje de exito en la pantalla
     private void mostrarExito(String msg) {
         lblMensaje.setStyle("-fx-text-fill: #27ae60;"); lblMensaje.setText(msg);
     }
-
-    //Muestra un mensaje de error en la pantalla
     private void mostrarError(String msg) {
         lblMensaje.setStyle("-fx-text-fill: #e74c3c;"); lblMensaje.setText(msg);
     }

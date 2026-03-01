@@ -1,5 +1,3 @@
-<!-- Vista para gestionar bicicletas. Permite registrar nuevas bicicletas y ver la lista en una tabla. -->
-
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>

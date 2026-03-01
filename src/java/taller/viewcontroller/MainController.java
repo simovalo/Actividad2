@@ -13,7 +13,9 @@ import java.io.IOException;
 /**
  * Controlador de la ventana principal.
  *
- * Gestiona la barra lateral de navegación y el área central de contenido. Muestra el nombre, dirección y teléfono del taller en el encabezado del sidebar y carga dinámicamente las vistas al hacer clic en cada opción.</p>
+ * <p>Gestiona la barra lateral de navegación y el área central de contenido.
+ * Muestra el nombre, dirección y teléfono del taller en el encabezado del
+ * sidebar y carga dinámicamente las vistas al hacer clic en cada opción.</p>
  *
  * @author Samuel Marin
  * @version 1.0
@@ -27,31 +29,42 @@ public class MainController {
     @FXML private Label     lblDireccionTaller;
     @FXML private Label     lblTelefonoTaller;
 
-    //Muestra los datos del taller y carga la primera vista
+    /**
+     * Muestra los datos del taller en el sidebar y carga la vista inicial.
+     * Llamado automáticamente por el FXMLLoader.
+     */
     @FXML
     public void initialize() {
         lblNombreTaller.setText(taller.getNombre());
         lblDireccionTaller.setText(taller.getDireccion());
-        lblTelefonoTaller.setText("Telefono: " + taller.getTelefono());
+        lblTelefonoTaller.setText("📞 " + taller.getTelefono());
         cargarVista("clientes.fxml");
     }
 
-    //Muestra la vista de los clientes
+    // ── Navegación ─────────────────────────────────────────────────────────────
+
+    /** Carga la vista de gestión de clientes. */
     @FXML private void showClientes()  { cargarVista("clientes.fxml");  }
 
-    //Muestra la vista de las bicicletas
+    /** Carga la vista de gestión de bicicletas. */
     @FXML private void showBicicletas(){ cargarVista("bicicletas.fxml"); }
 
-    //Muestra la vista de mecanicos
+    /** Carga la vista de gestión de mecánicos. */
     @FXML private void showMecanicos() { cargarVista("mecanicos.fxml"); }
 
-    //Muestra la vista de las ordenes
+    /** Carga la vista de órdenes de servicio. */
     @FXML private void showOrdenes()   { cargarVista("ordenes.fxml");   }
 
-    //Muestra la vista de las consultas y reportes
+    /** Carga la vista de consultas y reportes. */
     @FXML private void showConsultas() { cargarVista("consultas.fxml"); }
 
-    //Carga una vista FXML en el area central
+    // ── Utilidad ───────────────────────────────────────────────────────────────
+
+    /**
+     * Carga un FXML en el área central de contenido.
+     *
+     * @param fxml Nombre del archivo FXML en el directorio de recursos.
+     */
     private void cargarVista(String fxml) {
         try {
             FXMLLoader loader = new FXMLLoader(

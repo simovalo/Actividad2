@@ -10,8 +10,8 @@ import javafx.stage.Stage;
 /**
  * entrada a la aplicacion echa en fx.
  *
- * <p>Inicializa la instancia única de {@link TallerBicicletas} con los
- * datos reales del taller y lanza la ventana principal.</p>
+ * <p>se inicializa la instancia unica de con los datos
+ * quemados.</p>
  *
  * @author Juan Manuel Vera
  * @version 1.0
@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
     /**
-     * Instancia única del taller, compartida por todos los controladores
+     * instancia unica del taller, compartida por todos los controladores
      * a través de {@link #getTaller()}.
      */
     private static final TallerBicicletas taller = new TallerBicicletas(

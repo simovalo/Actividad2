@@ -1,15 +1,13 @@
 package taller.model;
 
 /**
- * Contrato para cualquier entidad del sistema que pueda identificarse
- * de forma única y describirse a sí misma.
+ * contrato para cualquier entidad del sistema que pueda identificarse
+ * de forma única.
  *
- * <p>Es implementada por {@link Cliente} y {@link Mecanico} a través de
- * la clase abstracta {@link Persona}, garantizando que ambas entidades
- * exponen un identificador único y una descripción legible.</p>
+ * <p>es implementada por Cliente y Mecanico a través de
+ * la clase abstracta Persona, garantizando que ambas entidades
+ * exponen un identificador único y a su misma ves una descipcion legible.</p>
  *
- * <p>Permite tratar de forma polimórfica a clientes y mecánicos
- * en operaciones genéricas de búsqueda o reporte.</p>
  *
  * @author Juan Manuel Vera
  * @version 1.0
@@ -17,21 +15,21 @@ package taller.model;
 public interface Identificable {
 
     /**
-     * Retorna el identificador único de la entidad.
+     * retorna el identificador único de la entidad.
      *
-     * <ul>
-     *   <li>En {@link Cliente}: devuelve el número de identificación (cédula/pasaporte).</li>
-     *   <li>En {@link Mecanico}: devuelve el código interno del mecánico.</li>
-     * </ul>
+     *
+     *   en Cliente: devuelve el número de identificación (cédula/pasaporte).
+     *   en Mecanico: devuelve el código interno del mecánico.
+     *
      *
      * @return cadena no nula con el identificador único.
      */
     String getId();
 
     /**
-     * Retorna una descripción legible de la entidad para uso en UI y reportes.
+     * retorna una descripción de la entidad.
      *
-     * @return cadena descriptiva con los datos más relevantes de la entidad.
+     * @return cadena descriptiva con los datos más relevantes.
      */
     String getDescripcion();
 }
