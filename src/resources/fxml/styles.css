@@ -1,11 +1,13 @@
-/* ── Fuente base ── */
+/* Estilos generales del sistema */
+
+/* Fuente base */
 .root {
     -fx-font-family: "Segoe UI", Arial, sans-serif;
     -fx-font-size: 13px;
     -fx-background-color: #f0f2f5;
 }
 
-/* ── Sidebar ── */
+/* Barra lateral */
 .sidebar {
     -fx-background-color: #1a2535;
 }
@@ -36,13 +38,13 @@
     -fx-text-fill: #ffffff;
 }
 
-/* ── Content area ── */
+/* ARea de contenido */
 .content-area {
     -fx-background-color: #f0f2f5;
     -fx-padding: 0;
 }
 
-/* ── View root ── */
+/* Vista */
 .view-root {
     -fx-background-color: #f0f2f5;
 }
@@ -59,7 +61,7 @@
     -fx-text-fill: #445566;
 }
 
-/* ── Form pane ── */
+/* Formularios */
 .form-pane {
     -fx-background-color: #ffffff;
     -fx-background-radius: 8;
@@ -75,7 +77,7 @@
     -fx-text-fill: #334455;
 }
 
-/* ── Botones ── */
+/* Botones */
 .btn-primary {
     -fx-background-color: #2563eb;
     -fx-text-fill: white;
@@ -101,7 +103,7 @@
     -fx-background-color: #d1d5db;
 }
 
-/* ── Tabla ── */
+/* Tablas */
 .table-view {
     -fx-background-color: #ffffff;
     -fx-background-radius: 8;
@@ -128,7 +130,7 @@
     -fx-fill: #1e3a5f;
 }
 
-/* ── TextField ── */
+/* Campos de texto */
 .text-field, .text-area, .date-picker .text-field, .combo-box .text-field {
     -fx-background-radius: 5;
     -fx-border-radius: 5;
@@ -141,7 +143,7 @@
     -fx-border-color: #2563eb;
 }
 
-/* ── Sidebar extras ── */
+/* Elementos de la barra lateral */
 .sidebar-menu-label {
     -fx-text-fill: #556677;
     -fx-font-size: 10px;

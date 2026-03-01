@@ -1,3 +1,4 @@
+<!-- Vista para realizar consultas y reportes -->
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
@@ -10,9 +11,9 @@
 
     <Label text="🔍  Consultas" styleClass="view-title"/>
 
-    <!-- ── Tres paneles de búsqueda ── -->
+    <!-- Paneles de búsqueda -->
     <HBox spacing="16">
-        <!-- F5 Historial -->
+        <!-- Historial por bicicleta -->
         <TitledPane text="📋 Historial por bicicleta" collapsible="false"
                     styleClass="form-pane" HBox.hgrow="ALWAYS">
             <HBox spacing="8" alignment="CENTER_LEFT">
@@ -24,7 +25,7 @@
             </HBox>
         </TitledPane>
 
-        <!-- F6 Por fecha -->
+        <!-- Consulta por fecha -->
         <TitledPane text="📅 Órdenes por fecha" collapsible="false"
                     styleClass="form-pane" HBox.hgrow="ALWAYS">
             <HBox spacing="8" alignment="CENTER_LEFT">
@@ -35,7 +36,7 @@
             </HBox>
         </TitledPane>
 
-        <!-- F7 Reporte costos -->
+        <!-- reporte de costos por cliente -->
         <TitledPane text="💰 Costos por cliente" collapsible="false"
                     styleClass="form-pane" HBox.hgrow="ALWAYS">
             <VBox spacing="8">

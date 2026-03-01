@@ -1,3 +1,4 @@
+<!-- Ventana principal del sistema -->
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
@@ -7,12 +8,12 @@
             fx:controller="taller.viewcontroller.MainController"
             prefWidth="960" prefHeight="680">
 
-    <!-- ── SIDEBAR ── -->
+    <!-- Barra lateral -->
     <left>
         <VBox styleClass="sidebar" spacing="4" prefWidth="190">
             <padding><Insets top="20" right="12" bottom="20" left="12"/></padding>
 
-            <!-- Datos del taller -->
+            <!-- Informacion del taller -->
             <Label text="🚲" style="-fx-font-size:28px; -fx-text-fill:#4da6ff;"/>
             <Label fx:id="lblNombreTaller" styleClass="sidebar-title" wrapText="true"/>
             <Label fx:id="lblDireccionTaller" styleClass="sidebar-subtitle" wrapText="true"/>
@@ -30,7 +31,7 @@
         </VBox>
     </left>
 
-    <!-- ── CONTENIDO PRINCIPAL ── -->
+    <!-- Area de contenido -->
     <center>
         <StackPane fx:id="contentArea" styleClass="content-area"/>
     </center>
