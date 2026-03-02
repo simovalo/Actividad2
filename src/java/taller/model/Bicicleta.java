@@ -25,7 +25,7 @@ public class Bicicleta {
     private String color;
     private int anio;
     private final Cliente propietario;
-    private List<TallerBicicletas> ownedByTallerBicicletas;
+
 
     // Constructor
 
@@ -55,7 +55,6 @@ public class Bicicleta {
         this.color       = color.trim();
         this.anio        = anio;
         this.propietario = propietario;
-        this.ownedByTallerBicicletas = new ArrayList<>();
     }
 
     //  Getters
@@ -67,9 +66,6 @@ public class Bicicleta {
     public int     getAnio()        { return anio; }
     public Cliente getPropietario() { return propietario; }
 
-    public List<TallerBicicletas> getOwnedByTallerBicicletas() {
-        return ownedByTallerBicicletas;
-    }
     //  Setters
 
     public void setMarca(String marca) {
